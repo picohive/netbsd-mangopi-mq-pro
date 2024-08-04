@@ -1,0 +1,10 @@
+#	$NetBSD$
+#
+# standard NetBSD/riscv for Allwinner D1 SoC options
+
+include 	"arch/riscv/conf/std.riscv64"
+
+#options 	KERNEL_BASE_EXT=0xc0000000
+makeoptions	BOARDTYPE="sun20i_d1"
+makeoptions 	LOADADDRESS="0x45000000"
+makeoptions 	BOARDMKFRAG="${THISRISCV}/conf/mk.sun20i_d1"

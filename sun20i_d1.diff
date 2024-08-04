@@ -1,0 +1,108 @@
+Index: arch/arm/sunxi/sun6i_dma.c
+===================================================================
+RCS file: /cvsroot/src/sys/arch/arm/sunxi/sun6i_dma.c,v
+retrieving revision 1.15
+diff -r1.15 sun6i_dma.c
+153a154,163
+> static const struct sun6idma_config sun20i_d1_dma_config = {
+> 	.num_channels = 16,
+> 	.autogate = true,
+> 	.autogate_reg = 0x28,
+> 	.autogate_mask = 0x4,
+> 	.burst_mask = __BITS(7,6),
+> 	.bursts = BURSTS_1_4_8_16,
+> 	.widths = WIDTHS_1_2_4_8,
+> };
+> 
+172a183,184
+> 	{ .compat = "allwinner,sun20i-d1-dma",
+> 	  .data = &sun20i_d1_dma_config },
+Index: arch/arm/sunxi/sunxi_gpio.c
+===================================================================
+RCS file: /cvsroot/src/sys/arch/arm/sunxi/sunxi_gpio.c,v
+retrieving revision 1.38
+diff -r1.38 sunxi_gpio.c
+50c50
+< #define	SUNXI_GPIO_MAX_EINT_BANK	5
+---
+> #define	SUNXI_GPIO_MAX_EINT_BANK	6
+123a124,127
+> #ifdef SOC_SUN20I_D1
+> 	{ .compat = "allwinner,sun20i-d1-pinctrl",
+> 	  .data = &sun20i_d1_padconf },
+> #endif
+1057c1061
+< 	KASSERT(sc->sc_eint_bank_max < SUNXI_GPIO_MAX_EINT_BANK);
+---
+> 	KASSERT(sc->sc_eint_bank_max <= SUNXI_GPIO_MAX_EINT_BANK);
+Index: arch/arm/sunxi/sunxi_gpio.h
+===================================================================
+RCS file: /cvsroot/src/sys/arch/arm/sunxi/sunxi_gpio.h,v
+retrieving revision 1.10
+diff -r1.10 sunxi_gpio.h
+37c37
+< #define SUNXI_GPIO_MAXFUNC	8
+---
+> #define SUNXI_GPIO_MAXFUNC	15
+90a91,94
+> #ifdef SOC_SUN20I_D1
+> extern const struct sunxi_gpio_padconf sun20i_d1_padconf;
+> #endif
+> 
+Index: arch/arm/sunxi/sunxi_sid.c
+===================================================================
+RCS file: /cvsroot/src/sys/arch/arm/sunxi/sunxi_sid.c,v
+retrieving revision 1.7
+diff -r1.7 sunxi_sid.c
+61a62
+> 	{ .compat = "allwinner,sun20i-d1-sid",	.data = &sun8i_h3_sid_config },
+Index: arch/arm/sunxi/sunxi_usbphy.c
+===================================================================
+RCS file: /cvsroot/src/sys/arch/arm/sunxi/sunxi_usbphy.c,v
+retrieving revision 1.17
+diff -r1.17 sunxi_usbphy.c
+82a83
+> 	USBPHY_D1,
+94a96
+> 	{ .compat = "allwinner,sun20i-d1-usb-phy",	.value = USBPHY_D1 },
+152a155
+> 	case USBPHY_D1:
+235a239
+> 	case USBPHY_D1:
+Index: arch/riscv/conf/files.generic64
+===================================================================
+RCS file: /cvsroot/src/sys/arch/riscv/conf/files.generic64,v
+retrieving revision 1.2
+diff -r1.2 files.generic64
+8a9
+> include "arch/riscv/sunxi/files.sunxi"
+Index: arch/riscv/dev/plic_fdt.c
+===================================================================
+RCS file: /cvsroot/src/sys/arch/riscv/dev/plic_fdt.c,v
+retrieving revision 1.6
+diff -r1.6 plic_fdt.c
+51a52
+> 	{ .compat = "thead,c900-plic" },
+Index: arch/riscv/riscv/cpu.c
+===================================================================
+RCS file: /cvsroot/src/sys/arch/riscv/riscv/cpu.c,v
+retrieving revision 1.6
+diff -r1.6 cpu.c
+71a72,73
+> #define CPU_VENDOR_THEAD	0x5b7
+> 
+84a87,94
+> struct cpu_arch cpu_arch_thead[] = {
+>     {
+> 	.ca_id = 0,
+> 	.ca_name = "9-Series Processor (C9, E9 series)",
+>     },
+>     { },	// terminator
+> };
+> 
+94a105,109
+>     {
+> 	.cv_id = CPU_VENDOR_THEAD,
+> 	.cv_name = "T-HEAD",
+> 	.cv_arch = cpu_arch_thead,
+>     },

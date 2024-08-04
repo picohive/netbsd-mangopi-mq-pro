@@ -1,0 +1,283 @@
+[268]HELLO! BOOT0 is starting!
+[271]BOOT0 commit : 882671f
+[274]set pll start
+[276]periph0 has been enabled
+[279]set pll end
+[280]board init ok
+[282]DRAM only have internal ZQ!!
+[285]get_pmu_exist() = -1
+[287]ddr_efuse_type: 0x0
+[291][AUTO DEBUG] two rank and full DQ!
+[294]ddr_efuse_type: 0x0
+[297][AUTO DEBUG] rank 0 row = 15
+[300][AUTO DEBUG] rank 0 bank = 8
+[303][AUTO DEBUG] rank 0 page size = 2 KB
+[307][AUTO DEBUG] rank 1 row = 15
+[310][AUTO DEBUG] rank 1 bank = 8
+[313][AUTO DEBUG] rank 1 page size = 2 KB
+[317]rank1 config same as rank0
+[320]DRAM BOOT DRIVE INFO: V0.24
+[323]DRAM CLK = 792 MHz
+[325]DRAM Type = 3 (2:DDR2,3:DDR3)
+[329]DRAMC ZQ value: 0x7b7bfb
+[331]DRAM ODT value: 0x42.
+[334]ddr_efuse_type: 0x0
+[337]DRAM SIZE =1024 M
+[340]DRAM simple test OK.
+[343]dram size =1024
+[345]card no is 0
+[346]sdcard 0 line count 4
+[349][mmc]: mmc driver ver 2021-04-2 16:45
+[358][mmc]: Wrong media type 0x0
+[361][mmc]: ***Try SD card 0***
+[371][mmc]: HSSDR52/SDR25 4 bit
+[374][mmc]: 50000000 Hz
+[376][mmc]: 30168 MB
+[378][mmc]: ***SD/MMC 0 init OK!!!***
+[384]error:bad magic.
+[416]Loading boot-pkg Succeed(index=0).
+[419]Entry_name        = opensbi
+[422]Entry_name        = dtb
+[425]Entry_name        = u-boot
+[428]Adding DRAM info to DTB.
+[433]Jump to second Boot.
+
+OpenSBI v1.0-2-g4bcaf9a
+   ____                    _____ ____ _____
+  / __ \                  / ____|  _ \_   _|
+ | |  | |_ __   ___ _ __ | (___ | |_) || |
+ | |  | | '_ \ / _ \ '_ \ \___ \|  _ < | |
+ | |__| | |_) |  __/ | | |____) | |_) || |_
+  \____/| .__/ \___|_| |_|_____/|____/_____|
+        | |
+        |_|
+
+Platform Name             : MangoPi MQ Pro
+Platform Features         : medeleg
+Platform HART Count       : 1
+Platform IPI Device       : ---
+Platform Timer Device     : --- @ 0Hz
+Platform Console Device   : uart8250
+Platform HSM Device       : ---
+Platform Reboot Device    : sunxi-wdt-reset
+Platform Shutdown Device  : ---
+Firmware Base             : 0x40000000
+Firmware Size             : 252 KB
+Runtime SBI Version       : 0.3
+
+Domain0 Name              : root
+Domain0 Boot HART         : 0
+Domain0 HARTs             : 0*
+Domain0 Region00          : 0x0000000040000000-0x000000004003ffff ()
+Domain0 Region01          : 0x0000000000000000-0xffffffffffffffff (R,W,X)
+Domain0 Next Address      : 0x000000004a000000
+Domain0 Next Arg1         : 0x0000000044000000
+Domain0 Next Mode         : S-mode
+Domain0 SysReset          : yes
+
+Boot HART ID              : 0
+Boot HART Domain          : root
+Boot HART ISA             : rv64imafdcvsux
+Boot HART Features        : scounteren,mcounteren,mcountinhibit,time
+Boot HART PMP Count       : 16
+Boot HART PMP Granularity : 2048
+Boot HART PMP Address Bits: 38
+Boot HART MHPM Count      : 0
+Boot HART MIDELEG         : 0x0000000000000222
+Boot HART MEDELEG         : 0x000000000000b109
+
+
+U-Boot 2022.04 (Jul 20 2024 - 16:48:58 +0800)
+
+DRAM:  1 GiB
+sunxi_set_gate: (CLK#24) unhandled
+Core:  39 devices, 17 uclasses, devicetree: board
+WDT:   Started watchdog@6011000 with servicing (16s timeout)
+MMC:   mmc@4020000: 0, mmc@4021000: 1
+Loading Environment from nowhere... OK
+In:    serial@2500000
+Out:   serial@2500000
+Err:   serial@2500000
+Net:   No ethernet found.
+Hit any key to stop autoboot:  0
+switch to partitions #0, OK
+mmc0 is current device
+Scanning mmc 0:1...
+libfdt fdt_check_header(): FDT_ERR_BADMAGIC
+Scanning disk mmc@4020000.blk...
+Scanning disk mmc@4021000.blk...
+Disk mmc@4021000.blk not ready
+Found 3 disks
+** Unable to read file ubootefi.var **
+Failed to load EFI variables
+BootOrder not defined
+EFI boot manager: Cannot load any image
+Found EFI removable media binary efi/boot/bootriscv64.efi
+185000 bytes read in 42 ms (4.2 MiB/s)
+libfdt fdt_check_header(): FDT_ERR_BADMAGIC
+Booting /efi\boot\bootriscv64.efi
+
+  \\-__,------,___.
+   \\        __,---`  NetBSD/riscv efiboot (riscv64)
+    \\       `---,_.  Revision 2.13 (Thu Jul 18 12:09:12 UTC 2024)
+     \\-,_____,.---`
+      \\
+       \\
+        \\
+
+Press return to boot now, any other key for boot prompt
+booting netbsd - starting in 0 seconds.
+4371636+1726904+1258324+855212 [575592+348909]=0xae65a8
+
+------------
+NetBSD start
+
+sp:      0x0000_0000_7de0_2000
+pc:      0x0000_0000_7d40_0080
+hart:    0x0000_0000_0000_0000
+dtb:     0x0000_0000_7e00_0000
+l1:      0x0000_0000_7de0_3000
+l2:      0x0000_0000_7de0_2000
+uspace:  0x0000_0000_7de0_0000
+bootstk: 0x0000_0000_7de0_2000
+vtopdiff:0xffff_ffbf_82c0_0000
+
+bss:     0x0000_0000_7dd3_3354 - 0x0000_0000_7de0_4000
+
+l2pde:   0x0000_0000_7de0_2800:  0x0000_0000_1f78_0c01
+
+kern:    0x0000_0000_7de0_3000:  0x0000_0000_1f50_00ef
+kern:    0x0000_0000_7de0_3008:  0x0000_0000_1f58_00ef
+kern:    0x0000_0000_7de0_3010:  0x0000_0000_1f60_00ef
+kern:    0x0000_0000_7de0_3018:  0x0000_0000_1f68_00ef
+kern:    0x0000_0000_7de0_3020:  0x0000_0000_1f70_00ef
+kern:    0x0000_0000_7de0_3028:  0x0000_0000_1f78_00ef
+kern:    0x0000_0000_7de0_3030:  0x0000_0000_1f80_00ef
+kern:    0x0000_0000_7de0_3038:  0x0000_0000_1f88_00ef
+kern:    0x0000_0000_7de0_3040:  0x0000_0000_1f90_00ef
+kern:    0x0000_0000_7de0_3048:  0x0000_0000_1f98_00ef
+kern:    0x0000_0000_7de0_3050:  0x0000_0000_1fa0_00ef
+kern:    0x0000_0000_7de0_3058:  0x0000_0000_1fa8_00ef
+kern:    0x0000_0000_7de0_3060:  0x0000_0000_1fb0_00ef
+kern:    0x0000_0000_7de0_3068:  0x0000_0000_1fb8_00ef
+kern:    0x0000_0000_7de0_3070:  0x0000_0000_1fc0_00ef
+kern:    0x0000_0000_7de0_3078:  0x0000_0000_1fc8_00ef
+dtb:     0x0000_0000_7de0_3080:  0x0000_0000_1f80_00e7
+PM
+[   1.0000000] FDT<0xffffffc002000000>
+[   1.0000000] devmap 0xffffffc000600018
+[   1.0000000] bootstrap
+[   1.0000000] stdout
+[   1.0000000] fdt size 6000/5ca7
+[   1.0000000] consinit ok
+[   1.0000000] NetBSD/riscv (fdt) booting ...
+[   1.0000000] FDT /memory @ 0x40000000 size 0x7ef7000
+[   1.0000000] FDT /memory @ 0x47f09000 size 0x36412000
+[   1.0000000] FDT /memory @ 0x7e31f000 size 0x834000
+[   1.0000000] FDT /memory @ 0x7eb5c000 size 0x140f000
+[   1.0000000] FDT /memory @ 0x7ff6c000 size 0x94000
+[   1.0000000] init_riscv: memory start 40000000 end 80000000 (len 40000000)
+[   1.0000000] cpu_kernel_vm_init: kernel phys start 0x7d400000 end 0x7de00000
+[   1.0000000] cpu_kernel_vm_init: init   phys start 0x7de00000 end 0x7de04000
+[   1.0000000] dm:   0xffffffc000a02c08 :  0x100000e7
+[   1.0000000] bootargs:
+[   1.0000000] msgbufaddr = 0xffffffe07fff0000
+[   1.0000000] ------------------------------------------
+[   1.0000000]            kern_vtopdiff = 0xffffffbf82c00000
+[   1.0000000]             memory_start = 0x        40000000
+[   1.0000000]               memory_end = 0x        80000000
+[   1.0000000]              memory_size = 0x        40000000
+[   1.0000000]           kernstart_phys = 0x        7d400000
+[   1.0000000]             kernend_phys = 0x        7de00000
+[   1.0000000]               msgbufaddr = 0xffffffe07fff0000
+[   1.0000000]    VM_MIN_KERNEL_ADDRESS = 0xffffffc000000000
+[   1.0000000]           kernstart_mega = 0xffffffc000000000
+[   1.0000000]                kernstart = 0xffffffc000000000
+[   1.0000000]                  kernend = 0xffffffc000a00000
+[   1.0000000]             kernend_mega = 0xffffffc000a00000
+[   1.0000000]    VM_MAX_KERNEL_ADDRESS = 0xffffffd000000000
+[   1.0000000]         pmap_direct_base = 0xffffffe000000000
+[   1.0000000] ------------------------------------------
+[   1.0000000] adding       0x40040000 -       0x47ef7000  to freelist 0
+[   1.0000000] adding       0x47f09000 -       0x7d400000  to freelist 0
+[   1.0000000] adding       0x7de04000 -       0x7e000000  to freelist 0
+[   1.0000000] adding       0x7e006000 -       0x7e31b000  to freelist 0
+[   1.0000000] adding       0x7e31f000 -       0x7eb53000  to freelist 0
+[   1.0000000] adding       0x7eb5c000 -       0x7ff6b000  to freelist 0
+[   1.0000000] adding       0x7ff6c000 -       0x7fff0000  to freelist 0
+[   1.0000000] common bs_pde 0xffffffc000a02000 ASID max ffff nkmempages limits: ffffffc004000000 - ffffffd000000000
+[   1.0000000] kva   : ffffffc004000000 - ffffffc04ec00000
+[   1.0000000] mpstart
+[   1.0000000] riscv_fdt_cpu_mpstart: kernel compiled without MULTIPROCESSOR
+[   1.0000000] Loaded initial symtab at 0xffffffc000842638, strtab at 0xffffffc0008ceea0, # entries 22761
+[   1.0000000] Copyright (c) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
+[   1.0000000]     2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013,
+[   1.0000000]     2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023,
+[   1.0000000]     2024
+[   1.0000000]     The NetBSD Foundation, Inc.  All rights reserved.
+[   1.0000000] Copyright (c) 1982, 1986, 1989, 1991, 1993
+[   1.0000000]     The Regents of the University of California.  All rights reserved.
+
+[   1.0000000] NetBSD 10.99.11 (SUN20I_D1) #82: Tue Jul 30 20:46:20 CST 2024
+[   1.0000000]  rxg@picohive:/usr/builds/obj.riscv64/sys/arch/riscv/compile/SUN20I_D1
+[   1.0000000] total memory = 1013 MB
+[   1.0000000] avail memory = 980 MB
+[   1.0000000] mainbus0 (root)
+[   1.0000000] simplebus0 at mainbus0: MangoPi MQ Pro
+[   1.0000000] simplebus1 at simplebus0
+[   1.0000000] cpus0 at simplebus0
+[   1.0000000] simplebus2 at simplebus0
+[   1.0000000] cpu0 at cpus0: T-HEAD 9-Series Processor (C9, E9 series) imp. 0
+[   1.0000000] fclock0 at simplebus0: 24000000 Hz fixed clock (osc24M)
+[   1.0000000] syscon0 at simplebus1: System Controller Registers
+[   1.0000000] intc0 at cpu0: local interrupt controller
+[   1.0000000] sun20id1ccu0 at simplebus1: D1 CCU
+[   1.0000000] plic0 at simplebus1: RISC-V PLIC (176 IRQs)
+[   1.0000000] sunxigpio0 at simplebus1: PIO
+[   1.0000000] gpio0 at sunxigpio0: 88 pins
+[   1.0000000] sunxigpio0: interrupting on plic0 irq 85
+[   1.0000000] fregulator0 at simplebus0: vdd-cpu
+[   1.0000000] fregulator1 at simplebus0: vcc-3v3
+[   1.0000000] fregulator2 at simplebus0: avdd2v8
+[   1.0000000] sun6idma0 at simplebus1: DMA controller (16 channels)
+[   1.0000000] sun6idma0: interrupting on plic0 irq 66
+[   1.0000000] sunxisid0 at simplebus1: Security ID EFUSE
+[   1.0000000] fregulator3 at simplebus0: vcc
+[   1.0000000] fregulator4 at simplebus0: dvdd
+[   1.0000000] sunxiusbphy0 at simplebus1: USB PHY
+[   1.0000000] /soc/mixer@5100000 at simplebus1 not configured
+[   1.0000000] /soc/mixer@5200000 at simplebus1 not configured
+[   1.0000000] /soc/temperature-sensor@2009400 at simplebus1 not configured
+[   1.0000000] /soc/rtc@7090000 at simplebus1 not configured
+[   1.0000000] /soc/audio-codec@2030000/regulators@2030348 at syscon0 not configured
+[   1.0000000] /wifi-pwrseq at simplebus0 not configured
+[   1.0000000] /soc/syscon@3000000 at simplebus1 not configured
+[   1.0000000] /soc/clock-controller@5000000 at simplebus1 not configured
+[   1.0000000] /soc/iommu@2010000 at simplebus1 not configured
+[   1.0000000] /soc/tcon-top@5460000 at simplebus1 not configured
+[   1.0000000] /soc/phy@5451000 at simplebus1 not configured
+[   1.0000000] /soc/lcd-controller@5461000 at simplebus1 not configured
+[   1.0000000] /soc/lcd-controller@5470000 at simplebus1 not configured
+[   1.0000000] /soc/hdmi@5500000 at simplebus1 not configured
+[   1.0000000] /soc/phy@5510000 at simplebus1 not configured
+[   1.0000000] /connector at simplebus0 not configured
+[   1.0000000] /soc/clock-controller@7010000 at simplebus1 not configured
+[   1.0000000] /display-engine at simplebus0 not configured
+[   1.0000000] /leds at simplebus0 not configured
+[   1.0000000] /soc/timer@2050000 at simplebus1 not configured
+[   1.0000000] com0 at simplebus1: DesignWare APB UART, no fifo
+[   1.0000000] com0: console
+[   1.0000000] com0: interrupting on plic0 irq 18
+[   1.0000000] com1 at simplebus1: DesignWare APB UART, no fifo
+[   1.0000000] com1: interrupting on plic0 irq 19
+[   1.0000000] /soc/crypto@3040000 at simplebus1 not configured
+[   1.0000000] /soc/mmc@4020000 at simplebus1 not configured
+[   1.0000000] /soc/mmc@4021000 at simplebus1 not configured
+[   1.0000000] /soc/usb@4100000 at simplebus1 not configured
+[   1.0000000] /soc/usb@4200000 at simplebus1 not configured
+[   1.0000000] /soc/usb@4200400 at simplebus1 not configured
+[   1.0000000] /soc/watchdog@6011000 at simplebus1 not configured
+[   1.0000030] WARNING: system needs entropy for security; see entropy(7)
+[   1.0000030] swwdog0: software watchdog initialized
+[   1.0000030] boot device: <unknown>
+[   1.0000030] root device:
