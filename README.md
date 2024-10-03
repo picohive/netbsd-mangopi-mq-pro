@@ -25,12 +25,9 @@
 ### Write image
 dd if=riscv64.img of=/dev/rld0d bs=1m conv=sync
 
-### BSP boot0 SPL
-dd if=boot0_sdcard_sun20iw1p1.bin of=/dev/rld0d bs=8192 seek=1 conv=sync
-
-### U-Boot TOC1 image
-dd if=u-boot.toc1 of=/dev/rld0d bs=512 seek=24576 conv=sync
+### U-Boot
+cd /usr/pkgsrc/wip/u-boot-mangopi-mq-pro ; make install
+dd if=/usr/pkg/share/u-boot/mangopi-mq-pro/u-boot-sunxi-with-spl.bin of=/dev/rld0d bs=1k seek=8 conv=sync
 
 ### TODO
 * SD/MMC debug
-* Mainline U-Boot support
