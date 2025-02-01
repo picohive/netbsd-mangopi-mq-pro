@@ -1,0 +1,412 @@
+U-Boot SPL 2022.10 (Jan 23 2025 - 19:19:12 +0800)
+sunxi_ram_probe: dram-controller@3102000: probing
+DRAM only have internal ZQ!!
+ddr_efuse_type: 0x0
+[AUTO DEBUG] two rank and full DQ!
+ddr_efuse_type: 0x0
+[AUTO DEBUG] rank 0 row = 15
+[AUTO DEBUG] rank 0 bank = 8
+[AUTO DEBUG] rank 0 page size = 2 KB
+[AUTO DEBUG] rank 1 row = 15
+[AUTO DEBUG] rank 1 bank = 8
+[AUTO DEBUG] rank 1 page size = 2 KB
+rank1 config same as rank0
+DRAM BOOT DRIVE INFO: V0.24
+DRAM CLK = 792 MHz
+DRAM Type = 3 (2:DDR2,3:DDR3)
+DRAMC ZQ value: 0x7b7bfb
+DRAM ODT value: 0x42.
+ddr_efuse_type: 0x0
+DRAM SIZE =1024 M
+DRAM simple test OK.
+mxstatus=0xc0408000 mhcr=0x00000109 mcor=0x00000003 mhint=0x00004000
+Trying to boot from MMC1
+PLL reg = 0xf8216300, freq = 1200000000
+SPL size = 81920, sector = 160
+sunxi_ram_get_info: dram-controller@3102000: getting info
+
+OpenSBI v1.4
+   ____                    _____ ____ _____
+  / __ \                  / ____|  _ \_   _|
+ | |  | |_ __   ___ _ __ | (___ | |_) || |
+ | |  | | '_ \ / _ \ '_ \ \___ \|  _ < | |
+ | |__| | |_) |  __/ | | |____) | |_) || |_
+  \____/| .__/ \___|_| |_|_____/|____/_____|
+        | |
+        |_|
+
+Platform Name             : MangoPi MQ Pro
+Platform Features         : medeleg
+Platform HART Count       : 1
+Platform IPI Device       : aclint-mswi
+Platform Timer Device     : aclint-mtimer @ 24000000Hz
+Platform Console Device   : uart8250
+Platform HSM Device       : sun20i-d1-ppu
+Platform PMU Device       : thead,c900-pmu
+Platform Reboot Device    : sunxi-wdt-reset
+Platform Shutdown Device  : ---
+Platform Suspend Device   : ---
+Platform CPPC Device      : ---
+Firmware Base             : 0x40000000
+Firmware Size             : 323 KB
+Firmware RW Offset        : 0x40000
+Firmware RW Size          : 67 KB
+Firmware Heap Offset      : 0x48000
+Firmware Heap Size        : 35 KB (total), 2 KB (reserved), 9 KB (used), 23 KB (free)
+Firmware Scratch Size     : 4096 B (total), 328 B (used), 3768 B (free)
+Runtime SBI Version       : 2.0
+
+Domain0 Name              : root
+Domain0 Boot HART         : 0
+Domain0 HARTs             : 0*
+Domain0 Region00          : 0x0000000002500000-0x0000000002500fff M: (I,R,W) S/U: (R,W)
+Domain0 Region01          : 0x0000000014008000-0x000000001400bfff M: (I,R,W) S/U: ()
+Domain0 Region02          : 0x0000000014000000-0x0000000014007fff M: (I,R,W) S/U: ()
+Domain0 Region03          : 0x0000000040040000-0x000000004005ffff M: (R,W) S/U: ()
+Domain0 Region04          : 0x0000000040000000-0x000000004003ffff M: (R,X) S/U: ()
+Domain0 Region05          : 0x0000000010000000-0x0000000013ffffff M: (I,R,W) S/U: (R,W)
+Domain0 Region06          : 0x0000000000000000-0xffffffffffffffff M: () S/U: (R,W,X)
+Domain0 Next Address      : 0x0000000042e00000
+Domain0 Next Arg1         : 0x0000000042e86f80
+Domain0 Next Mode         : S-mode
+Domain0 SysReset          : yes
+Domain0 SysSuspend        : yes
+
+Boot HART ID              : 0
+Boot HART Domain          : root
+Boot HART Priv Version    : v1.11
+Boot HART Base ISA        : rv64imafdcvx
+Boot HART ISA Extensions  : zicntr,zihpm
+Boot HART PMP Count       : 8
+Boot HART PMP Granularity : 11 bits
+Boot HART PMP Address Bits: 38
+Boot HART MHPM Info       : 12 (0x0003e3f8)
+Boot HART MIDELEG         : 0x0000000000020222
+Boot HART MEDELEG         : 0x000000000000b109
+sunxi_set_gate: (CLK#24) unhandled
+
+
+U-Boot 2022.10 (Jan 23 2025 - 19:19:12 +0800) Allwinner Technology
+
+DRAM:  1 GiB
+sunxi_set_gate: (CLK#24) unhandled
+Core:  46 devices, 19 uclasses, devicetree: separate
+WDT:   Started watchdog@6011000 with servicing every 1000ms (16s timeout)
+MMC:   mmc@4020000: 0, mmc@4021000: 1
+Loading Environment from FAT... PLL reg = 0xf8216300, freq = 1200000000
+Unable to read "uboot.env" from mmc0:1...
+In:    serial@2500000
+Out:   serial@2500000
+Err:   serial@2500000
+Net:   No ethernet found.
+starting USB...
+Bus usb@4200000: USB EHCI 1.00
+Bus usb@4200400: USB OHCI 1.0
+scanning bus usb@4200000 for devices... 1 USB Device(s) found
+scanning bus usb@4200400 for devices... 1 USB Device(s) found
+       scanning usb for storage devices... 0 Storage Device(s) found
+Hit any key to stop autoboot:  0
+PLL reg = 0xf8216300, freq = 1200000000
+switch to partitions #0, OK
+mmc0 is current device
+Scanning mmc 0:1...
+Card did not respond to voltage select! : -110
+** Unable to read file ubootefi.var **
+Failed to load EFI variables
+BootOrder not defined
+EFI boot manager: Cannot load any image
+Found EFI removable media binary efi/boot/bootriscv64.efi
+185000 bytes read in 36 ms (4.9 MiB/s)
+Booting /efi\boot\bootriscv64.efi
+
+
+  \\-__,------,___.
+   \\        __,---`  NetBSD/riscv efiboot (riscv64)
+    \\       `---,_.  Revision 2.13 (Tue Aug 13 20:52:52 UTC 2024)
+     \\-,_____,.---`
+      \\
+       \\
+        \\
+
+Press return to boot now, any other key for boot prompt
+booting netbsd - starting in 0 seconds.
+4543174+1842088+1400364+745940 [597312+363266]=0xaf7298
+
+------------
+NetBSD start
+
+sp:      0x0000_0000_7de0_2000
+pc:      0x0000_0000_7d40_0080
+hart:    0x0000_0000_0000_0000
+dtb:     0x0000_0000_7e00_0000
+l1:      0x0000_0000_7de0_b000
+l2:      0x0000_0000_7de0_a000
+uspace:  0x0000_0000_7de0_0000
+bootstk: 0x0000_0000_7de0_2000
+vtopdiff:0xffff_ffbf_82c0_0000
+
+bss:     0x0000_0000_7dd5_5e2c - 0x0000_0000_7de0_c000
+
+l2pde:   0x0000_0000_7de0_a800:  0x0000_0000_1f78_2c01
+
+kern:    0x0000_0000_7de0_b000:  0x0000_0000_1f50_00ef
+kern:    0x0000_0000_7de0_b008:  0x0000_0000_1f58_00ef
+kern:    0x0000_0000_7de0_b010:  0x0000_0000_1f60_00ef
+kern:    0x0000_0000_7de0_b018:  0x0000_0000_1f68_00ef
+kern:    0x0000_0000_7de0_b020:  0x0000_0000_1f70_00ef
+kern:    0x0000_0000_7de0_b028:  0x0000_0000_1f78_00ef
+kern:    0x0000_0000_7de0_b030:  0x0000_0000_1f80_00ef
+kern:    0x0000_0000_7de0_b038:  0x0000_0000_1f88_00ef
+kern:    0x0000_0000_7de0_b040:  0x0000_0000_1f90_00ef
+kern:    0x0000_0000_7de0_b048:  0x0000_0000_1f98_00ef
+kern:    0x0000_0000_7de0_b050:  0x0000_0000_1fa0_00ef
+kern:    0x0000_0000_7de0_b058:  0x0000_0000_1fa8_00ef
+kern:    0x0000_0000_7de0_b060:  0x0000_0000_1fb0_00ef
+kern:    0x0000_0000_7de0_b068:  0x0000_0000_1fb8_00ef
+kern:    0x0000_0000_7de0_b070:  0x0000_0000_1fc0_00ef
+kern:    0x0000_0000_7de0_b078:  0x0000_0000_1fc8_00ef
+dtb:     0x0000_0000_7de0_b080:  0x0000_0000_1f80_00e7
+PM
+[   1.0000000] FDT<0xffffffc002000000>
+[   1.0000000] devmap 0xffffffc000822210
+[   1.0000000] bootstrap
+[   1.0000000] stdout
+[   1.0000000] fdt size 8000/7d8c
+[   1.0000000] consinit ok
+[   1.0000000] NetBSD/riscv (fdt) booting ...
+[   1.0000000] FDT /memory @ 0x40060000 size 0x7e92000
+[   1.0000000] FDT /memory @ 0x47f0e000 size 0x365ea000
+[   1.0000000] FDT /memory @ 0x7e4fc000 size 0x834000
+[   1.0000000] FDT /memory @ 0x7ed3a000 size 0x1234000
+[   1.0000000] FDT /memory @ 0x7ff6f000 size 0x91000
+[   1.0000000] init_riscv: memory start 40060000 end 80000000 (len 3ffa0000)
+[   1.0000000] cpu_kernel_vm_init: kernel phys start 0x7d400000 end 0x7de00000
+[   1.0000000] cpu_kernel_vm_init: init   phys start 0x7de00000 end 0x7de0c000
+[   1.0000000] dm:   0xffffffc000a0ac08 :  0x100000e7
+[   1.0000000] bootargs:
+[   1.0000000] msgbufaddr = 0xffffffe07fff0000
+[   1.0000000] ------------------------------------------
+[   1.0000000]            kern_vtopdiff = 0xffffffbf82c00000
+[   1.0000000]             memory_start = 0x        40060000
+[   1.0000000]               memory_end = 0x        80000000
+[   1.0000000]              memory_size = 0x        3ffa0000
+[   1.0000000]           kernstart_phys = 0x        7d400000
+[   1.0000000]             kernend_phys = 0x        7de00000
+[   1.0000000]               msgbufaddr = 0xffffffe07fff0000
+[   1.0000000]    VM_MIN_KERNEL_ADDRESS = 0xffffffc000000000
+[   1.0000000]           kernstart_mega = 0xffffffc000000000
+[   1.0000000]                kernstart = 0xffffffc000000000
+[   1.0000000]                  kernend = 0xffffffc000a00000
+[   1.0000000]             kernend_mega = 0xffffffc000a00000
+[   1.0000000]    VM_MAX_KERNEL_ADDRESS = 0xffffffd000000000
+[   1.0000000]         pmap_direct_base = 0xffffffe000000000
+[   1.0000000] ------------------------------------------
+[   1.0000000] adding       0x40060000 -       0x47ef2000  to freelist 0
+[   1.0000000] adding       0x47f0e000 -       0x7d400000  to freelist 0
+[   1.0000000] adding       0x7de0c000 -       0x7e000000  to freelist 0
+[   1.0000000] adding       0x7e008000 -       0x7e4f8000  to freelist 0
+[   1.0000000] adding       0x7e4fc000 -       0x7ed30000  to freelist 0
+[   1.0000000] adding       0x7ed3a000 -       0x7ff6e000  to freelist 0
+[   1.0000000] adding       0x7ff6f000 -       0x7fff0000  to freelist 0
+[   1.0000000] common cpusets bs_pde 0xffffffc000a0a000 ASID max ffff kcpusets nkmempages limits: ffffffc004000000 - ffffffd000000000
+[   1.0000000] kva   : ffffffc004000000 - ffffffc04ea00000
+[   1.0000000] mpstart
+[   1.0000000] Loaded initial symtab at 0xffffffc00085c310, strtab at 0xffffffc0008ee050, # entries 23629
+[   1.0000000] Copyright (c) 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003,
+[   1.0000000]     2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013,
+[   1.0000000]     2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023,
+[   1.0000000]     2024
+[   1.0000000]     The NetBSD Foundation, Inc.  All rights reserved.
+[   1.0000000] Copyright (c) 1982, 1986, 1989, 1991, 1993
+[   1.0000000]     The Regents of the University of California.  All rights reserved.
+
+[   1.0000000] NetBSD 10.99.11 (GENERIC64) #6: Sat Feb  1 11:41:16 CST 2025
+[   1.0000000]  rxg@picohive:/usr/builds/obj.riscv64/sys/arch/riscv/compile/GENERIC64
+[   1.0000000] total memory = 1013 MB
+[   1.0000000] avail memory = 980 MB
+[   1.0000000] mainbus0 (root)
+[   1.0000000] simplebus0 at mainbus0: MangoPi MQ Pro
+[   1.0000000] simplebus1 at simplebus0
+[   1.0000000] cpus0 at simplebus0
+[   1.0000000] simplebus2 at simplebus0
+[   1.0000000] cpu0 at cpus0: T-Head 9-Series Processor (C9, E9 series) imp. 0
+[   1.0000000] fclock0 at simplebus0: 24000000 Hz fixed clock (osc24M)
+[   1.0000000] syscon0 at simplebus1: System Controller Registers
+[   1.0000000] intc0 at cpu0: local interrupt controller
+[   1.0000000] sun20id1ccu0 at simplebus1: D1 CCU
+[   1.0000000] plic0 at simplebus1: RISC-V PLIC (176 IRQs)
+[   1.0000000] sunxigpio0 at simplebus1: PIO
+[   1.0000000] gpio0 at sunxigpio0: 88 pins
+[   1.0000000] sunxigpio0: interrupting on plic0 irq 85
+[   1.0000000] fregulator0 at simplebus0: vdd-cpu
+[   1.0000000] fregulator1 at simplebus0: vcc-3v3
+[   1.0000000] fregulator2 at simplebus0: avdd2v8
+[   1.0000000] sun6idma0 at simplebus1: DMA controller (16 channels)
+[   1.0000000] sun6idma0: interrupting on plic0 irq 66
+[   1.0000000] sunxisid0 at simplebus1: Security ID EFUSE
+[   1.0000000] fregulator3 at simplebus0: vcc
+[   1.0000000] fregulator4 at simplebus0: dvdd
+[   1.0000000] /soc/mixer@5100000 at simplebus1 not configured
+[   1.0000000] /soc/mixer@5200000 at simplebus1 not configured
+[   1.0000000] /soc/temperature-sensor@2009400 at simplebus1 not configured
+[   1.0000000] /soc/rtc@7090000 at simplebus1 not configured
+[   1.0000000] /soc/audio-codec@2030000/regulators@2030348 at syscon0 not configured
+[   1.0000000] /wifi-pwrseq at simplebus0 not configured
+[   1.0000000] sunxiusbphy0 at simplebus1: USB PHY
+[   1.0000000] /soc/syscon@3000000 at simplebus1 not configured
+[   1.0000000] /soc/clock-controller@5000000 at simplebus1 not configured
+[   1.0000000] /soc/iommu@2010000 at simplebus1 not configured
+[   1.0000000] /soc/tcon-top@5460000 at simplebus1 not configured
+[   1.0000000] /soc/phy@5451000 at simplebus1 not configured
+[   1.0000000] /soc/lcd-controller@5461000 at simplebus1 not configured
+[   1.0000000] /soc/lcd-controller@5470000 at simplebus1 not configured
+[   1.0000000] /soc/hdmi@5500000 at simplebus1 not configured
+[   1.0000000] /soc/phy@5510000 at simplebus1 not configured
+[   1.0000000] /connector at simplebus0 not configured
+[   1.0000000] /soc/clock-controller@7010000 at simplebus1 not configured
+[   1.0000000] /display-engine at simplebus0 not configured
+[   1.0000000] /soc/timer@2050000 at simplebus1 not configured
+[   1.0000000] com0 at simplebus1: DesignWare APB UART, no fifo
+[   1.0000000] com0: console
+[   1.0000000] com0: interrupting on plic0 irq 18
+[   1.0000000] com1 at simplebus1: DesignWare APB UART, no fifo
+[   1.0000000] com1: interrupting on plic0 irq 19
+[   1.0000000] /soc/crypto@3040000 at simplebus1 not configured
+[   1.0000000] /soc/dram-controller@3102000 at simplebus1 not configured
+[   1.0000000] sunximmc0 at simplebus1: SD/MMC controller
+[   1.0000000] sunximmc0: interrupting on plic0 irq 56
+[   1.0000000] sunximmc1 at simplebus1: SD/MMC controller
+[   1.0000000] sunximmc1: interrupting on plic0 irq 57
+[   1.0000000] /soc/usb@4100000 at simplebus1 not configured
+[   1.0000000] /soc/usb@4200000 at simplebus1 not configured
+[   1.0000000] /soc/usb@4200400 at simplebus1 not configured
+[   1.0000000] /soc/watchdog@6011000 at simplebus1 not configured
+[   1.0000000] /soc/clint@14000000 at simplebus1 not configured
+[   1.0000000] /leds at simplebus0 not configured
+[   1.0000030] cpu_boot_secondary_processors: starting secondary processors
+[   1.0000030] cpu_boot_secondary_processors: secondary processors hatched. 1 running
+[   1.0143676] sunximmc0: host reset
+[   1.0143676] sunximmc0: width = 1
+[   1.0228400] sdmmc0 at sunximmc0
+[   1.0299764] sdmmc1 at sunximmc1
+[   1.0399740] sunximmc0: update clock
+[   1.0399740] sunximmc0: update clock
+[   1.0499709] sunximmc0: update clock
+[   1.0599777] WARNING: system needs entropy for security; see entropy(7)
+[   1.1499638] sunximmc0: opcode 52 flags 0x4032 data 0x0 datalen 0 blklen 0
+[   1.1499638] sunximmc0: cmdval = 80000140
+[   1.1605857] sunximmc0: mmc intr idst=00000000 mint=00000100
+[   1.1605857] sunximmc0: mmc intr idst=00000000 mint=00000004
+[   1.1730731] sunximmc0: i/o error 60
+[   1.1730731] sunximmc0: update clock
+[   1.1799978] sdmmc_io_send_op_cond: ocr = 0
+[   1.1799978] sunximmc0: opcode 5 flags 0x4302 data 0x0 datalen 0 blklen 0
+[   1.1907420] sunximmc0: cmdval = 80000040
+[   1.1907420] sunximmc0: mmc intr idst=00000000 mint=00000100
+[   1.2016059] sunximmc0: mmc intr idst=00000000 mint=00000004
+[   1.2016059] sunximmc0: i/o error 60
+[   1.2106211] sunximmc0: update clock
+[   1.2106211] sdmmc_io_send_op_cond: error = 60
+[   1.2106211] sunximmc0: opcode 0 flags 0x600 data 0x0 datalen 0 blklen 0
+[   1.2250037] sunximmc0: cmdval = 80008000
+[   1.2250037] sunximmc0: mmc intr idst=00000000 mint=00000004
+[   1.2350219] sdmmc0: sdmmc_mem_send_op_cond: ocr=0
+[   1.2350219] sunximmc0: opcode 55 flags 0x4432 data 0x0 datalen 0 blklen 0
+[   1.2464543] sunximmc0: cmdval = 80000140
+[   1.2503713] sunximmc0: mmc intr idst=00000000 mint=00000004
+[   1.2503713] sunximmc0: opcode 41 flags 0x4702 data 0x0 datalen 0 blklen 0
+[   1.2631024] sunximmc0: cmdval = 80000040
+[   1.2631024] sdmmc_io_send_op_cond: ocr = 0
+[   1.2710758] sunximmc0: mmc intr idst=00000000 mint=00000004
+[   1.2710758] sdmmc0: sdmmc_mem_send_op_cond: error=0, ocr=0x40ff8000
+[   1.2828617] sdmmc0: host_ocr 0x40300000
+[   1.2828617] sdmmc0: card_ocr 0x40ff8000
+[   1.2904821] sunximmc0: opcode 0 flags 0x600 data 0x0 datalen 0 blklen 0
+[   1.2904821] sunximmc0: cmdval = 80008000
+[   1.3009925] sdmmc_io_send_op_cond: error = 0
+[   1.3009925] sunximmc0: mmc intr idst=00000000 mint=00000004
+[   1.3107835] sdmmc1: no memory present
+[   1.3107835] sdmmc_io_send_op_cond: ocr = 0x40300000
+[   1.3107835] sunximmc0: opcode 8 flags 0x5732 data 0x0 datalen 0 blklen 0
+[   1.3259360] sunximmc0: cmdval = 80000140
+[   1.3259360] sdmmc_io_send_op_cond: error = 0
+[   1.3340823] sunximmc0: mmc intr idst=00000000 mint=00000004
+[   1.3340823] sdmmc0: sdmmc_mem_send_if_cond: error=0, ocr=0x1aa
+[   1.3454370] sdmmc0: sdmmc_mem_send_op_cond: ocr=0x40300000
+[   1.3508890] sunximmc0: opcode 55 flags 0x4432 data 0x0 datalen 0 blklen 0
+[   1.3508890] sunximmc0: cmdval = 80000140
+[   1.3615734] sunximmc0: mmc intr idst=00000000 mint=00000004
+[   1.3615734] sunximmc0: opcode 41 flags 0x4702 data 0x0 datalen 0 blklen 0
+[   1.3743044] sunximmc0: cmdval = 80000040
+[   1.3743044] sunximmc0: mmc intr idst=00000000 mint=00000004
+[   1.3899658] sunximmc0: opcode 55 flags 0x4432 data 0x0 datalen 0 blklen 0
+[   1.3899658] sunximmc0: cmdval = 80000140
+[   1.4005681] sunximmc0: mmc intr idst=00000000 mint=00000004
+[   1.4005681] sunximmc0: opcode 41 flags 0x4702 data 0x0 datalen 0 blklen 0
+[   1.4132960] sunximmc0: cmdval = 80000040
+[   1.4132960] sunximmc0: mmc intr idst=00000000 mint=00000004
+[   1.4231892] sdmmc0: sdmmc_mem_send_op_cond: error=0, ocr=0xc0ff8000
+[   1.4231892] sunximmc0: opcode 2 flags 0x431a data 0x0 datalen 0 blklen 0
+[   1.4360875] sunximmc0: cmdval = 800001c0
+[   1.4400052] sunximmc0: mmc intr idst=00000000 mint=00000004
+[   1.4400052] sdmmc_dump_data: CID
+[   1.4400052] --------+--------------------------------------------------+------------------+
+[   1.4579446] offset  | +0 +1 +2 +3 +4 +5 +6 +7  +8 +9 +a +b +c +d +e +f | data             |
+[   1.4662555] --------+--------------------------------------------------+------------------+
+[   1.4745754] 00000000| 2c 01 84 03 00 00 00 30  30 30 30 30 49 54 9f 00 | ,......00000IT.. |
+[   1.4802080] --------+--------------------------------------------------+------------------+
+[   1.4912139] sunximmc0: opcode 3 flags 0x332 data 0x0 datalen 0 blklen 0
+[   1.4912139] sunximmc0: cmdval = 80000140
+[   1.5017297] sunximmc0: mmc intr idst=00000000 mint=00000004
+[   1.5017297] sunximmc0: opcode 2 flags 0x431a data 0x0 datalen 0 blklen 0
+[   1.5143934] sunximmc0: cmdval = 800001c0
+[   1.5143934] sunximmc0: mmc intr idst=00000000 mint=00000100
+[   1.5143934] sunximmc0: mmc intr idst=00000000 mint=00000004
+[   1.5308006] sunximmc0: i/o error 60
+[   1.5308006] sunximmc0: update clock
+[   1.5308006] sunximmc0: opcode 9 flags 0x1a data 0x0 datalen 0 blklen 0
+[   1.5442299] sunximmc0: cmdval = 800001c0
+[   1.5442299] sunximmc0: mmc intr idst=00000000 mint=00000004
+[   1.5545837] sdmmc_dump_data: CSD
+[   1.5545837] --------+--------------------------------------------------+------------------+
+[   1.5660949] offset  | +0 +1 +2 +3 +4 +5 +6 +7  +8 +9 +a +b +c +d +e +f | data             |
+[   1.5744098] --------+--------------------------------------------------+------------------+
+[   1.5827287] 00000000| 00 40 0a 80 7f af eb 00  00 59 5b 32 00 0e 40 00 | .@.......Y[2..@. |
+[   1.5900081] --------+--------------------------------------------------+------------------+
+[   1.5900081] sdmmc0: SD Ver.2.0
+[   1.6024026] sdmmc0: CID: mid=0x9f oid=0x5449 pnm="00000" rev=0x00 psn=0x00000384 mdt=12c
+[   1.6104622] sunximmc0: opcode 7 flags 0x32 data 0x0 datalen 0 blklen 0
+[   1.6104622] sunximmc0: cmdval = 80000140
+[   1.6208930] sunximmc0: mmc intr idst=00000000 mint=00000004
+[   1.6208930] sunximmc0: opcode 16 flags 0x432 data 0x0 datalen 0 blklen 0
+[   1.6335546] sunximmc0: cmdval = 80000140
+[   1.6335546] sunximmc0: mmc intr idst=00000000 mint=00000004
+[   1.6434695] sdmmc0: sdmmc_mem_set_blocklen: read_bl_len=512 sector_size=512
+[   1.6503858] sunximmc0: update clock
+[   1.6503858] sunximmc0: update clock
+[   1.6599705] sunximmc0: update clock
+[   1.6599705] sunximmc0: opcode 55 flags 0x432 data 0x0 datalen 0 blklen 0
+[   1.6701085] sunximmc0: cmdval = 80000140
+[   1.6701085] sunximmc0: mmc intr idst=00000000 mint=00000004
+[   1.6701085] sunximmc0: opcode 51 flags 0x572 data 0xffffffe041f0d000 datalen 8 blklen 8
+[   1.6875332] sunximmc0: cmdval = 80002340
+[   1.6914471] sunximmc0: mmc intr idst=00000000 mint=00000004
+[   1.6914471] sunximmc0: mmc intr idst=00000000 mint=00000808
+[   1.6914471] sunximmc0: host controller error, mint=0x00000808
+[   1.7099755] sdmmc1: 4-bit width, 50.000 MHz
+[   1.7099755] sunximmc0: i/o error 5
+[   1.7099755] sunximmc0: update clock
+[   1.7220301] sdmmc0: sdmem_mem_send_scr: error = 5
+[   1.7220301] sdmmc0: SD_SEND_SCR send failed.
+[   1.7309457] sdmmc0: mem init failed
+[   1.7309457] sdmmc0: init failed
+[   1.7309457] sunximmc0: opcode 7 flags 0x0 data 0x0 datalen 0 blklen 0
+[   1.7439451] sunximmc0: cmdval = 80000000
+[   1.7439451] sunximmc0: mmc intr idst=00000000 mint=00000004
+[   1.7534039] sunximmc0: width = 1
+[   1.7534039] sunximmc0: update clock
+[   1.7600703] (manufacturer 0x24c, product 0xd723, standard function interface code 0x7) at sdmmc1 function 1 not configured
+[   1.7702373] swwdog0: software watchdog initialized
+[   1.7702373] WARNING: 3 errors while detecting hardware; check system log.
+[   1.7857030] boot device: <unknown>
+[   1.7857030] root device:

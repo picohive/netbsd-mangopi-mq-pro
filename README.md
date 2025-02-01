@@ -2,6 +2,7 @@
 * /usr/src/sys/arch/arm/sunxi/sun6i_dma.c
 * /usr/src/sys/arch/arm/sunxi/sunxi_gpio.c
 * /usr/src/sys/arch/arm/sunxi/sunxi_gpio.h
+* /usr/src/sys/arch/arm/sunxi/sunxi_mmc.c
 * /usr/src/sys/arch/arm/sunxi/sunxi_sid.c
 * /usr/src/sys/arch/arm/sunxi/sunxi_usbphy.c
 * /usr/src/sys/arch/riscv/conf/Makefile.riscv.inc
