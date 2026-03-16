@@ -1,0 +1,32 @@
+Index: sys/arch/riscv/sunxi/files.sunxi
+===================================================================
+RCS file: /cvsroot/src/sys/arch/riscv/sunxi/files.sunxi,v
+retrieving revision 1.3
+diff -u -p -r1.3 files.sunxi
+--- sys/arch/riscv/sunxi/files.sunxi	19 Sep 2025 22:09:04 -0000	1.3
++++ sys/arch/riscv/sunxi/files.sunxi	16 Mar 2026 02:05:56 -0000
+@@ -34,6 +34,12 @@ device	sun6idma: fdt_dma, fdt_reset
+ attach	sun6idma at fdt with sun6i_dma
+ file	arch/arm/sunxi/sun6i_dma.c		sun6i_dma
+ 
++# SD/MMC
++device	sunximmc: fdt_clock, fdt_gpio, fdt_mmc_pwrseq, fdt_regulator, fdt_reset, sdmmcbus
++attach	sunximmc at fdt with sunxi_mmc
++file	arch/arm/sunxi/sunxi_mmc.c		sunxi_mmc
++defparam opt_sunximmc.h				SUNXI_MMC_DEBUG
++
+ # Security ID EFUSE
+ device	sunxisid
+ attach	sunxisid at fdt with sunxi_sid
+@@ -44,6 +50,11 @@ device	sunxiusbphy: fdt_phy, fdt_regulat
+ attach	sunxiusbphy at fdt with sunxi_usbphy
+ file	arch/arm/sunxi/sunxi_usbphy.c		sunxi_usbphy
+ 
++# Watchdog
++device	sunxiwdt: sysmon_wdog
++attach	sunxiwdt at fdt with sunxi_wdt
++file	arch/arm/sunxi/sunxi_wdt.c		sunxi_wdt
++
+ # SOC parameters
+ defflag	opt_soc.h			SOC_SUNXI
+ defflag	opt_soc.h			SOC_SUN20I: SOC_SUNXI

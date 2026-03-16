@@ -1,0 +1,30 @@
+Index: sys/arch/riscv/include/cpufunc.h
+===================================================================
+RCS file: /cvsroot/src/sys/arch/riscv/include/cpufunc.h,v
+retrieving revision 1.1
+diff -u -p -r1.1 cpufunc.h
+--- sys/arch/riscv/include/cpufunc.h	7 May 2023 12:41:48 -0000	1.1
++++ sys/arch/riscv/include/cpufunc.h	16 Mar 2026 02:04:42 -0000
+@@ -50,16 +50,19 @@ __KERNEL_RCSID(0, "$NetBSD: cpufunc.h,v 
+ #define cpu_icache_sync_all()		__nothing
+ #define cpu_icache_inv_all()		__nothing
+ 
+-#define cpu_dcache_wbinv_range(v,s)	__nothing
+-#define cpu_dcache_inv_range(v,s)	__nothing
+-#define cpu_dcache_wb_range(v,s)	__nothing
+ #define cpu_idcache_wbinv_range(v,s)	__nothing
+ #define cpu_icache_sync_range(v,s)	__nothing
+ 
++extern void (*cpu_dcache_wbinv_range)(vaddr_t, vsize_t);
++extern void (*cpu_dcache_inv_range)(vaddr_t, vsize_t);
++extern void (*cpu_dcache_wb_range)(vaddr_t, vsize_t);
++
+ extern void (*cpu_sdcache_wbinv_range)(vaddr_t, paddr_t, psize_t);
+ extern void (*cpu_sdcache_inv_range)(vaddr_t, paddr_t, psize_t);
+ extern void (*cpu_sdcache_wb_range)(vaddr_t, paddr_t, psize_t);
+ 
++extern void cpufunc_init(device_t, void *);
++
+ extern u_int   riscv_dcache_align;
+ extern u_int   riscv_dcache_align_mask;
+ 

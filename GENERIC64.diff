@@ -1,0 +1,26 @@
+Index: sys/arch/riscv/conf/GENERIC64
+===================================================================
+RCS file: /cvsroot/src/sys/arch/riscv/conf/GENERIC64,v
+retrieving revision 1.22
+diff -u -p -r1.22 GENERIC64
+--- sys/arch/riscv/conf/GENERIC64	2 Mar 2026 07:26:14 -0000	1.22
++++ sys/arch/riscv/conf/GENERIC64	16 Mar 2026 02:11:08 -0000
+@@ -1,4 +1,4 @@
+-# $NetBSD: GENERIC64,v 1.22 2026/03/02 07:26:14 skrll Exp $
++# $NetBSD: GENERIC64,v 1.21 2025/02/08 16:12:20 skrll Exp $
+ #
+ # GENERIC machine description file
+ #
+@@ -78,8 +78,12 @@ gpio* 		at gpiobus?
+ # System control
+ jh7110syscon* 	at fdt? pass 1
+ 
++# Watchdog
++sunxiwdt* 	at fdt?			# Allwinner watchdog
++
+ # SDMMC
+ dwcmmc* 	at fdt?			# DesignWare SD/MMC
++sunximmc*	at fdt?			# Allwinner SD/MMC
+ sdmmc* 		at sdmmcbus?
+ ld0 		at sdmmc0
+ ld1 		at sdmmc1

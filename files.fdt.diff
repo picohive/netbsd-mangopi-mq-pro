@@ -1,0 +1,15 @@
+Index: sys/arch/riscv/fdt/files.fdt
+===================================================================
+RCS file: /cvsroot/src/sys/arch/riscv/fdt/files.fdt,v
+retrieving revision 1.5
+diff -u -p -r1.5 files.fdt
+--- sys/arch/riscv/fdt/files.fdt	6 Sep 2025 21:02:41 -0000	1.5
++++ sys/arch/riscv/fdt/files.fdt	16 Mar 2026 02:03:28 -0000
+@@ -3,6 +3,7 @@
+ include	"dev/pckbport/files.pckbport"
+ 
+ file	dev/fdt/fdt_platform.c
++file	arch/riscv/fdt/cpufunc.c
+ file	arch/riscv/fdt/cpus_fdt.c
+ file	arch/riscv/fdt/fdt_dma_machdep.c
+ file	arch/riscv/fdt/riscv_platform.c
