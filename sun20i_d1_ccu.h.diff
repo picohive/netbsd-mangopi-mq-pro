@@ -1,0 +1,18 @@
+Index: sys/arch/riscv/sunxi/sun20i_d1_ccu.h
+===================================================================
+RCS file: /cvsroot/src/sys/arch/riscv/sunxi/sun20i_d1_ccu.h,v
+retrieving revision 1.1
+diff -u -p -r1.1 sun20i_d1_ccu.h
+--- sys/arch/riscv/sunxi/sun20i_d1_ccu.h	13 Aug 2024 07:20:23 -0000	1.1
++++ sys/arch/riscv/sunxi/sun20i_d1_ccu.h	30 Mar 2026 08:06:16 -0000
+@@ -126,8 +126,8 @@
+ #define D1_CLK_AUDIO_DAC	94
+ #define D1_CLK_AUDIO_ADC	95
+ #define D1_CLK_BUS_AUDIO	96
+-#define D1_CLK_USB_PHY0		97
+-#define D1_CLK_USB_PHY1		98
++#define D1_CLK_USB_OHCI0	97
++#define D1_CLK_USB_OHCI1	98
+ #define D1_CLK_BUS_OHCI0	99
+ #define D1_CLK_BUS_OHCI1	100
+ #define D1_CLK_BUS_EHCI0	101

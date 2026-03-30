@@ -1,4 +1,4 @@
-[   1.0000000] NetBSD 11.99.3 (GENERIC64) #1: Mon Mar 16 09:40:35 CST 2026
+[   1.0000000] NetBSD 11.99.3 (GENERIC64) #4: Mon Mar 30 14:11:35 CST 2026
 [   1.0000000]  rxg@picohive:/usr/builds/obj.riscv64/sys/arch/riscv/compile/GENERIC64
 [   1.0000000] total memory = 1013 MB
 [   1.0000000] avail memory = 980 MB
@@ -8,7 +8,6 @@
 [   1.0000000] cpus0 at simplebus0
 [   1.0000000] simplebus2 at simplebus0
 [   1.0000000] cpu0 at cpus0: T-Head 9-Series Processor (C9, E9 series) imp. 0
-[   1.0000000] cpu0: T-Head cache ops enabled
 [   1.0000000] fclock0 at simplebus0: 24000000 Hz fixed clock (osc24M)
 [   1.0000000] syscon0 at simplebus1: System Controller Registers
 [   1.0000000] intc0 at cpu0: local interrupt controller
@@ -56,9 +55,16 @@
 [   1.0000000] sunximmc0: interrupting on plic0 irq 56
 [   1.0000000] sunximmc1 at simplebus1: SD/MMC controller
 [   1.0000000] sunximmc1: interrupting on plic0 irq 57
-[   1.0000000] /soc/usb@4100000 at simplebus1 not configured
-[   1.0000000] /soc/usb@4200000 at simplebus1 not configured
-[   1.0000000] /soc/usb@4200400 at simplebus1 not configured
+[   1.0000000] motg0 at simplebus1: 'peripheral' mode not supported
+[   1.0000000] ehci0 at simplebus1: EHCI
+[   1.0000000] ehci0: interrupting on plic0 irq 49
+[   1.0000000] ehci0: 1 companion controller, 1 port
+[   1.0000000] ehci0: Using DMA subregion for control data structures
+[   1.0000000] usb0 at ehci0: USB revision 2.0
+[   1.0000000] ohci0 at simplebus1: OHCI
+[   1.0000000] ohci0: interrupting on plic0 irq 50
+[   1.0000000] ohci0: OHCI version 1.0
+[   1.0000000] usb1 at ohci0: USB revision 1.0
 [   1.0000000] sunxiwdt0 at simplebus1: Watchdog
 [   1.0000000] sunxiwdt0: default watchdog period is 16 seconds
 [   1.0000000] /soc/clint@14000000 at simplebus1 not configured
@@ -66,21 +72,23 @@
 [   1.0000000] WARNING: system needs entropy for security; see entropy(7)
 [   1.0000030] cpu_boot_secondary_processors: starting secondary processors
 [   1.0000030] cpu_boot_secondary_processors: secondary processors hatched. 1 running
-[   1.0143226] sdmmc0 at sunximmc0
-[   1.0223420] sdmmc1 at sunximmc1
-[   1.1499754] sdmmc0: SD card status: 4-bit, C10, U1, V10
-[   1.1599823] ld0 at sdmmc0: <0x9f:0x5449:00000:0x00:0x00000384:0x12c>
-[   1.1599823] ld0: 30168 MB, 7661 cyl, 128 head, 63 sec, 512 bytes/sect x 61784064 sectors
-[   1.1799785] dk0 at ld0: "EFI", 163840 blocks at 32768, type: msdos
-[   1.1799785] dk1 at ld0: "netbsd-root", 61579264 blocks at 196608, type: ffs
-[   1.1954398] ld0: 4-bit width, High-Speed/SDR25, 50.000 MHz
-[   1.2599784] sdmmc1: 4-bit width, 50.000 MHz
-[   1.2599784] (manufacturer 0x24c, product 0xd723, standard function interface code 0x7) at sdmmc1 function 1 not configured
-[   1.2705101] swwdog0: software watchdog initialized
-[   1.2839041] boot device: dk1
-[   1.2899836] root on dk1
-[   1.2999755] root file system type: ffs
-[   1.3099836] kern.module.path=/stand/riscv/11.99.3/modules
-[   1.3216490] WARNING: no TOD clock present
-[   1.3216490] WARNING: using filesystem time
-[   1.3298942] WARNING: CHECK AND RESET THE DATE!
+[   1.0143222] sdmmc0 at sunximmc0
+[   1.0223761] sdmmc1 at sunximmc1
+[   1.0499779] uhub0 at usb0: NetBSD (0x0000) EHCI root hub (0x0000), class 9/0, rev 2.00/1.00, addr 1
+[   1.0628771] uhub1 at usb1: NetBSD (0x0000) OHCI root hub (0x0000), class 9/0, rev 1.00/1.00, addr 1
+[   1.1499742] sdmmc0: SD card status: 4-bit, C10, U1, V10
+[   1.1599812] ld0 at sdmmc0: <0x9f:0x5449:00000:0x00:0x00000384:0x12c>
+[   1.1599812] ld0: 30168 MB, 7661 cyl, 128 head, 63 sec, 512 bytes/sect x 61784064 sectors
+[   1.1799753] dk0 at ld0: "EFI", 163840 blocks at 32768, type: msdos
+[   1.1799753] dk1 at ld0: "netbsd-root", 61579264 blocks at 196608, type: ffs
+[   1.1954940] ld0: 4-bit width, High-Speed/SDR25, 50.000 MHz
+[   1.2599775] sdmmc1: 4-bit width, 50.000 MHz
+[   1.2599775] (manufacturer 0x24c, product 0xd723, standard function interface code 0x7) at sdmmc1 function 1 not configured
+[   1.5799574] swwdog0: software watchdog initialized
+[   1.5799574] boot device: dk1
+[   1.5915117] root on dk1
+[   1.5999751] root file system type: ffs
+[   1.6127595] kern.module.path=/stand/riscv/11.99.3/modules
+[   1.6248192] WARNING: no TOD clock present
+[   1.6248192] WARNING: using filesystem time
+[   1.6330869] WARNING: CHECK AND RESET THE DATE!

@@ -1,0 +1,19 @@
+Index: sys/arch/riscv/conf/GENERIC.common
+===================================================================
+RCS file: /cvsroot/src/sys/arch/riscv/conf/GENERIC.common,v
+retrieving revision 1.23
+diff -u -p -r1.23 GENERIC.common
+--- sys/arch/riscv/conf/GENERIC.common	2 Mar 2026 16:16:56 -0000	1.23
++++ sys/arch/riscv/conf/GENERIC.common	30 Mar 2026 08:04:10 -0000
+@@ -157,6 +157,11 @@ ppb* 		at pci? dev ? function ?
+ pci* 		at ppb?
+ 
+ # USB
++ehci*		at fdt?			# EHCI
++motg*		at fdt?			# Mentor Graphics USB OTG
++ohci*		at fdt?			# OHCI
++ehci*		at fdt?			# EHCI
++ohci*		at fdt?			# OHCI
+ xhci* 		at fdt?			# XHCI
+ xhci*		at pci?			# XHCI
+ usb* 		at usbus?
