@@ -4,8 +4,16 @@ RCS file: /cvsroot/src/sys/arch/riscv/sunxi/sun20i_d1_ccu.c,v
 retrieving revision 1.1
 diff -u -p -r1.1 sun20i_d1_ccu.c
 --- sys/arch/riscv/sunxi/sun20i_d1_ccu.c	13 Aug 2024 07:20:23 -0000	1.1
-+++ sys/arch/riscv/sunxi/sun20i_d1_ccu.c	30 Mar 2026 07:59:46 -0000
-@@ -218,11 +218,19 @@ static struct sunxi_ccu_reset sun20i_d1_
++++ sys/arch/riscv/sunxi/sun20i_d1_ccu.c	31 Mar 2026 03:19:25 -0000
+@@ -44,6 +44,7 @@ __KERNEL_RCSID(1, "$NetBSD: sun20i_d1_cc
+ #define	PLL_DDR_CTRL_REG		0x010
+ #define	PLL_PERI_CTRL_REG		0x020
+ #define	PLL_AUDIO1_CTRL_REG		0x080
++#define	CPU_AXI_CFG_REG			0x500
+ #define	PSI_CLK_REG			0x510
+ #define	APB0_CLK_REG			0x520
+ #define	APB1_CLK_REG			0x524
+@@ -218,11 +219,22 @@ static struct sunxi_ccu_reset sun20i_d1_
  	SUNXI_CCU_RESET(D1_RST_BUS_RISCV_CFG, RISCV_CFG_BGR_REG, 16),
  };
  
@@ -13,20 +21,23 @@ diff -u -p -r1.1 sun20i_d1_ccu.c
 +static const char *pll_periph_800m_parents[] = { "pll_periph_4x" };
 +static const char *pll_audio1_div2_parents[] = { "pll_audio1" };
 +static const char *pll_audio1_div5_parents[] = { "pll_audio1" };
++static const char *cpu_parents[] = { "hosc", "losc", "iosc", "pll_cpu", "pll_periph", "pll_periph_2x", "pll_periph_800m" };
++static const char *cpu_axi_parents[] = { "cpu" };
++static const char *cpu_apb_parents[] = { "cpu" };
  static const char *psi_parents[] = { "hosc", "losc", "iosc", "pll_periph" };
  static const char *apb_parents[] = { "hosc", "losc", "psi", "pll_periph" };
  static const char *dram_parents[] = { "pll_ddr", "pll_audio1_div2", "pll_periph_2x", "pll_periph_800m" };
  static const char *mmc_parents[] = { "hosc", "pll_periph", "pll_periph_2x", "pll_audio1_div2" };
 -static const char *mmc2_parents[] = { "pll_periph", "pll_periph_2x", "pll_periph_800m", "pll_audio1_div2" };
 +static const char *mmc2_parents[] = { "hosc", "pll_periph", "pll_periph_2x", "pll_periph_800m", "pll_audio1_div2" };
-+static const char *ohci_parents[] = { "pll_periph", "hosc", "losc" };
++static const char *usb_ohci_parents[] = { "pll_periph", "hosc", "losc" };
 +
-+static u_int sun20i_d1_ccu_ohci_get_rate(struct sunxi_ccu_softc *,
++static u_int sun20i_d1_ccu_usb_ohci_get_rate(struct sunxi_ccu_softc *,
 +    struct sunxi_ccu_clk *);
  
  static struct sunxi_ccu_clk sun20i_d1_ccu_clks[] = {
  	SUNXI_CCU_NKMP_TABLE(D1_CLK_PLL_CPU, "pll_cpu", "hosc",
-@@ -231,7 +239,7 @@ static struct sunxi_ccu_clk sun20i_d1_cc
+@@ -231,7 +243,7 @@ static struct sunxi_ccu_clk sun20i_d1_cc
  	    0,				/* k */
  	    0,				/* m */
  	    0,				/* p */
@@ -35,7 +46,7 @@ diff -u -p -r1.1 sun20i_d1_ccu.c
  	    __BIT(28),			/* lock */
  	    NULL,			/* table */
  	    SUNXI_CCU_NKMP_SCALE_CLOCK),
-@@ -242,45 +250,53 @@ static struct sunxi_ccu_clk sun20i_d1_cc
+@@ -242,45 +254,71 @@ static struct sunxi_ccu_clk sun20i_d1_cc
  	    0,				/* k */
  	    __BIT(1),			/* m */
  	    __BIT(0),			/* p */
@@ -104,10 +115,28 @@ diff -u -p -r1.1 sun20i_d1_ccu.c
 +	    __BITS(22,20),		/* div */
 +	    0,				/* sel */
 +	    0),
++
++	SUNXI_CCU_PREDIV(D1_CLK_CPU, "cpu", cpu_parents,
++	    CPU_AXI_CFG_REG,		/* reg */
++	    __BITS(17,16),		/* prediv */
++	    __BIT(3),			/* prediv_sel */
++	    0,				/* div */
++	    __BITS(26,24),		/* sel */
++	    SUNXI_CCU_PREDIV_PREDIV_POWER_OF_TWO),
++	SUNXI_CCU_DIV(D1_CLK_CPU_AXI, "cpu-axi", cpu_axi_parents,
++	    CPU_AXI_CFG_REG,		/* reg */
++	    __BITS(1,0),		/* div */
++	    0,				/* sel */
++	    0),
++	SUNXI_CCU_DIV(D1_CLK_CPU_APB, "cpu-apb", cpu_apb_parents,
++	    CPU_AXI_CFG_REG,		/* reg */
++	    __BITS(9,8),		/* div */
++	    0,				/* sel */
++	    0),
  
  	SUNXI_CCU_NM(D1_CLK_PSI, "psi", psi_parents,
  	    PSI_CLK_REG,	/* reg */
-@@ -338,6 +354,37 @@ static struct sunxi_ccu_clk sun20i_d1_cc
+@@ -338,6 +376,37 @@ static struct sunxi_ccu_clk sun20i_d1_cc
  	    __BIT(31),		/* enable */
  	    SUNXI_CCU_NM_POWER_OF_TWO|SUNXI_CCU_NM_ROUND_DOWN),
  
@@ -115,14 +144,14 @@ diff -u -p -r1.1 sun20i_d1_ccu.c
 +	    .type = SUNXI_CCU_DIV,
 +	    .base.name = "usb-ohci0",
 +	    .u.div.reg = USB0_CLK_REG,
-+	    .u.div.parents = ohci_parents,
-+	    .u.div.nparents = __arraycount(ohci_parents),
++	    .u.div.parents = usb_ohci_parents,
++	    .u.div.nparents = __arraycount(usb_ohci_parents),
 +	    .u.div.div = 0,
 +	    .u.div.sel = __BITS(25,24),
 +	    .u.div.enable = __BIT(31),
 +	    .u.div.flags = 0,
 +	    .enable = sunxi_ccu_div_enable,
-+	    .get_rate = sun20i_d1_ccu_ohci_get_rate,
++	    .get_rate = sun20i_d1_ccu_usb_ohci_get_rate,
 +	    .set_parent = sunxi_ccu_div_set_parent,
 +	    .get_parent = sunxi_ccu_div_get_parent,
 +	},
@@ -130,14 +159,14 @@ diff -u -p -r1.1 sun20i_d1_ccu.c
 +	    .type = SUNXI_CCU_DIV,
 +	    .base.name = "usb-ohci1",
 +	    .u.div.reg = USB1_CLK_REG,
-+	    .u.div.parents = ohci_parents,
-+	    .u.div.nparents = __arraycount(ohci_parents),
++	    .u.div.parents = usb_ohci_parents,
++	    .u.div.nparents = __arraycount(usb_ohci_parents),
 +	    .u.div.div = 0,
 +	    .u.div.sel = __BITS(25,24),
 +	    .u.div.enable = __BIT(31),
 +	    .u.div.flags = 0,
 +	    .enable = sunxi_ccu_div_enable,
-+	    .get_rate = sun20i_d1_ccu_ohci_get_rate,
++	    .get_rate = sun20i_d1_ccu_usb_ohci_get_rate,
 +	    .set_parent = sunxi_ccu_div_set_parent,
 +	    .get_parent = sunxi_ccu_div_get_parent,
 +	},
@@ -145,12 +174,12 @@ diff -u -p -r1.1 sun20i_d1_ccu.c
  	SUNXI_CCU_GATE(D1_CLK_BUS_DE, "bus-de", "psi",
  	    DE_BGR_REG, 0),
  
-@@ -516,6 +563,31 @@ static struct sunxi_ccu_clk sun20i_d1_cc
+@@ -516,6 +585,31 @@ static struct sunxi_ccu_clk sun20i_d1_cc
  	    RISCV_CFG_BGR_REG, 0),
  };
  
 +static u_int
-+sun20i_d1_ccu_ohci_get_rate(struct sunxi_ccu_softc *sc,
++sun20i_d1_ccu_usb_ohci_get_rate(struct sunxi_ccu_softc *sc,
 +    struct sunxi_ccu_clk *clk)
 +{
 +	struct clk *clkp, *clkp_parent;
@@ -166,7 +195,7 @@ diff -u -p -r1.1 sun20i_d1_ccu.c
 +		return 0;
 +
 +	ratio = howmany(parent_rate, 12000000);
-+	if (ratio >= 1)
++	if (ratio >= 2)
 +		rate =  parent_rate / ratio;
 +	else
 +		rate = parent_rate;

@@ -1,0 +1,15 @@
+Index: sys/arch/arm/sunxi/sunxi_ccu.h
+===================================================================
+RCS file: /cvsroot/src/sys/arch/arm/sunxi/sunxi_ccu.h,v
+retrieving revision 1.24
+diff -u -p -r1.24 sunxi_ccu.h
+--- sys/arch/arm/sunxi/sunxi_ccu.h	16 Sep 2024 23:37:13 -0000	1.24
++++ sys/arch/arm/sunxi/sunxi_ccu.h	31 Mar 2026 03:14:49 -0000
+@@ -273,6 +273,7 @@ struct sunxi_ccu_prediv {
+ 	uint32_t	flags;
+ #define	SUNXI_CCU_PREDIV_POWER_OF_TWO	__BIT(0)
+ #define	SUNXI_CCU_PREDIV_DIVIDE_BY_TWO	__BIT(1)
++#define	SUNXI_CCU_PREDIV_PREDIV_POWER_OF_TWO	__BIT(2)
+ };
+ 
+ u_int	sunxi_ccu_prediv_get_rate(struct sunxi_ccu_softc *,
