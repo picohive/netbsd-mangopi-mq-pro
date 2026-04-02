@@ -1,6 +1,4 @@
 ### File list
-* /usr/src/sys/arch/arm/sunxi/sunxi_ccu.h
-* /usr/src/sys/arch/arm/sunxi/sunxi_ccu_prediv.c
 * /usr/src/sys/arch/arm/sunxi/sun6i_dma.c
 * /usr/src/sys/arch/arm/sunxi/sunxi_gpio.c
 * /usr/src/sys/arch/arm/sunxi/sunxi_gpio.h
