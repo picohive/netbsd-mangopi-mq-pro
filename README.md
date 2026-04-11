@@ -22,6 +22,8 @@
 * /usr/src/sys/arch/riscv/sunxi/sun20i_d1_ccu.c
 * /usr/src/sys/arch/riscv/sunxi/sun20i_d1_ccu.h
 * /usr/src/sys/arch/riscv/sunxi/sun20i_d1_gpio.c
+* /usr/src/sys/arch/riscv/sunxi/sun20i_d1_r_ccu.c
+* /usr/src/sys/arch/riscv/sunxi/sun20i_d1_r_ccu.h
 * /usr/src/sys/arch/riscv/sunxi/sunxi_platform.c
 * /usr/src/sys/arch/riscv/sunxi/sunxi_platform.h
 

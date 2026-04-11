@@ -4,8 +4,20 @@ RCS file: /cvsroot/src/sys/arch/riscv/sunxi/files.sunxi,v
 retrieving revision 1.5
 diff -u -p -r1.5 files.sunxi
 --- sys/arch/riscv/sunxi/files.sunxi	18 Mar 2026 06:42:35 -0000	1.5
-+++ sys/arch/riscv/sunxi/files.sunxi	30 Mar 2026 08:02:43 -0000
-@@ -45,6 +45,10 @@ device	sunxisid
++++ sys/arch/riscv/sunxi/files.sunxi	11 Apr 2026 03:12:24 -0000
+@@ -23,6 +23,11 @@ device	sun20id1ccu: sunxi_ccu
+ attach	sun20id1ccu at fdt with sunxi_d1_ccu
+ file	arch/riscv/sunxi/sun20i_d1_ccu.c	sunxi_d1_ccu
+ 
++# CCU (D1/D1s PRCM)
++device	sun20id1rccu: sunxi_ccu
++attach	sun20id1rccu at fdt with sunxi_d1_r_ccu
++file	arch/riscv/sunxi/sun20i_d1_r_ccu.c	sunxi_d1_r_ccu
++
+ # GPIO
+ device	sunxigpio: fdt_gpio, fdt_regulator, fdt_reset, fdt_pinctrl, gpiobus
+ attach	sunxigpio at fdt with sunxi_gpio
+@@ -45,6 +50,10 @@ device	sunxisid
  attach	sunxisid at fdt with sunxi_sid
  file	arch/arm/sunxi/sunxi_sid.c		sunxi_sid
  

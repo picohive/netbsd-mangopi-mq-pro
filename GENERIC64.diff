@@ -1,0 +1,15 @@
+Index: sys/arch/riscv/conf/GENERIC64
+===================================================================
+RCS file: /cvsroot/src/sys/arch/riscv/conf/GENERIC64,v
+retrieving revision 1.24
+diff -u -p -r1.24 GENERIC64
+--- sys/arch/riscv/conf/GENERIC64	18 Mar 2026 06:42:35 -0000	1.24
++++ sys/arch/riscv/conf/GENERIC64	11 Apr 2026 03:13:33 -0000
+@@ -56,6 +56,7 @@ fregulator* 	at fdt? pass 4
+ jh7100clkc* 	at fdt?	pass 2		# StarFive JH7100 clock controller
+ jh7110clkc* 	at fdt?	pass 2		# StarFive JH7110 clock controller
+ sun20id1ccu* 	at fdt? pass 2		# Allwinner D1/D1s CCU
++sun20id1rccu* 	at fdt? pass 2		# Allwinner D1/D1s CCU (PRCM)
+ 
+ # Security ID EFUSE
+ sunxisid* 	at fdt? pass 4		# Allwinner SID
